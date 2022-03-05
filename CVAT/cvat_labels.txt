@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Blue Ball",
+    "id": 965604,
+    "color": "#0000ff",
+    "attributes": []
+  },
+  {
+    "name": "Red Ball",
+    "id": 965605,
+    "color": "#ff0000",
+    "attributes": []
+  },
+  {
+    "name": "Person",
+    "id": 965606,
+    "color": "#24b353",
+    "attributes": []
+  },
+  {
+    "name": "Blue Robot",
+    "id": 965607,
+    "color": "#32b7fa",
+    "attributes": []
+  },
+  {
+    "name": "Red Robot",
+    "id": 965608,
+    "color": "#ff6037",
+    "attributes": []
+  },
+  {
+    "name": "Robot",
+    "id": 965609,
+    "color": "#838194",
+    "attributes": []
+  }
+]
