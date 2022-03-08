@@ -8,10 +8,10 @@ Folder RPi_script contains the scripts that have been developed and tested to ru
 
 Checklist for the RPi coprocessor:
 
-- The RPi gets power from a VRM, use one of the 5V 2A ports. ==Be careful to connect the power cable to the correct pins on the RPi extension connector==.
+- The RPi gets power from a VRM, use one of the 5V 2A ports. **Be careful to connect the power cable to the correct pins on the RPi extension connector**.
 - The RPi network cable goes to the network port on the radio opposite of the power plug on the radio.
-- After the RPi is powered up and a laptop is connected to the robot radio, then the RPi serves a webpage that is accessible at URL: ==http:/wpilibpi.local==
-- If the URL doesn't work try 10.9.35.63 (63 being the address dynamically assigned to the RPi, this may be another address in the 10.9.35.x range)
+- After the RPi is powered up and a laptop is connected to the robot radio, then the RPi serves a webpage that is accessible at URL: **http://wpilibpi.local**
+- If the URL doesn't work try http://10.9.35.63 (63 being the address dynamically assigned to the RPi, this may be another address in the 10.9.35.x range)
 - The OAK-D Lite camera is connected via a USB-C to USB3 cable to a USB3 port on the RPi.
 
 When the webpage served by the RPi is visible, a new vision application can be uploaded: last tab, upload a .py file like the "frc-test-07.py". The uploaded vision application is automatically started when the RPi boots and it restarts if it crashes or is overwritten by a new vision application. The application can also be manually started and stopped: see second tab with "start", "stop" buttons and a console output log switch. Enabling the console output is useful for debugging vision applications.
