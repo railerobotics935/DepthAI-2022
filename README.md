@@ -17,3 +17,6 @@ Checklist for the RPi coprocessor:
 When the webpage served by the RPi is visible, a new vision application can be uploaded: last tab, upload a .py file like the "frc-test-07.py". The uploaded vision application is automatically started when the RPi boots and it restarts if it crashes or is overwritten by a new vision application. The application can also be manually started and stopped: see second tab with "start", "stop" buttons and a console output log switch. Enabling the console output is useful for debugging vision applications.
 
 The vision application writted in "frc-test-07.py" can act as NetworkTables server or client. When using the vision application on the robot it has to be in "Client" mode with team number 935 specified to find the NetworkTables server running in the RoboRIO. For benchtest purposes the application can be set to "Server" mode, this is useful when connecting directly from a PC to the RPi and using e.g. Shuffleboard on the PC pointed to the RPi as NetworkTables server.
+
+# Tips and Tricks for Annotation and Machine Learning
+- Export format for CAVT is PASCAL VOC 1.1
