@@ -97,15 +97,19 @@ if __name__ == "__main__":
     cs.enableLogging()
 
     # Width and Height have to match Neural Network settings: 300x300 pixels
-    output_stream_front_nn = cs.putVideo("FrontNN", 300, 300)
+    width = 300
+    height = 300
+    output_stream_front_nn = cs.putVideo("FrontNN", width, height)
     if streamDepth:
-        output_stream_front_depth = cs.putVideo("FrontDepth", 300, 300)
+        output_stream_front_depth = cs.putVideo("FrontDepth", width, height)
 
     # Pipeline tells DepthAI what operations to perform when running - you define all of the resources used and flows here
     pipeline = dai.Pipeline()
 
     # First, we want the Color camera as the output
-    colorCam = pipeline.createColorCamera()
+#    colorCam = pipeline.createColorCamera()
+    colorCam = pipeline.create(dai.node.ColorCamera)
+    manip = pipeline.create(dai.node.ImageManip)
     spatialDetectionNetwork = pipeline.createMobileNetSpatialDetectionNetwork()
     monoLeft = pipeline.createMonoCamera()
     monoRight = pipeline.createMonoCamera()
@@ -130,7 +134,6 @@ if __name__ == "__main__":
     colorCam.setFps(25)
 
     # Use ImageManip to resize to 300x300 with letterboxing: enables a wider FOV
-    manip = pipeline.create(dai.node.ImageManip)
     manip.setMaxOutputFrameSize(270000) # 300x300x3
     manip.initialConfig.setResizeThumbnail(300, 300)
     colorCam.preview.link(manip.inputImage)
@@ -190,27 +193,26 @@ if __name__ == "__main__":
         frame = None
         detections = []
 
-        startTime = time.monotonic()
-        counter = 0
-        fps = 0
+#        startTime = time.monotonic()
+#        counter = 0
+#        fps = 0
         color = (255, 255, 255)
         image_output_bandwidth_limit_counter = 0
 
         while True:
             inPreview = previewQueue.get()
-            if streamDepth:
-                depth = depthQueue.get()
             track = trackletsQueue.get()
 
-            counter+=1
-            current_time = time.monotonic()
-            if (current_time - startTime) > 1 :
-                fps = counter / (current_time - startTime)
-                counter = 0
-                startTime = current_time
+#            counter+=1
+#            current_time = time.monotonic()
+#            if (current_time - startTime) > 1 :
+#                fps = counter / (current_time - startTime)
+#                counter = 0
+#                startTime = current_time
 
             frame = inPreview.getCvFrame()
             if streamDepth:
+                depth = depthQueue.get()
                 depthFrame = depth.getFrame()
                 depthFrameColor = cv2.normalize(depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1)
                 depthFrameColor = cv2.equalizeHist(depthFrameColor)
